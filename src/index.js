@@ -1,10 +1,19 @@
 module.exports = function longestConsecutiveLength(array) {
-  function compareNumeric(a, b) {
-    if(a > b) return 1;
-    if(a < b) return -1;
-  }
+  let swap = 0;
+  do{
+    swap = 0;
+    for(let x = 0; x < array.length; x++) {
+      if(array[x+1] < array[x]) {
+        let a = array[x+1];
+        let b = array[x];
+        array[x] = array[x+1];
+        array[x+1] = b;
+        swap++;
+      }
+    }
+  }while(swap != 0);
 
-  array = array.sort(compareNumeric);
+
   let length = 0;
   let count = 0;
 
